@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title data-i18n="universities_title">Univerziteti</title>
+
+  <!-- Bootstrap CSS (HTTPS) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="custom.css" />
+ 
+  <!-- Bootstrap & jQuery JS (HTTPS) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="lang.js" defer></script>
+</head>
+<header>
+  <div class="jumbotron">
+    <div style="position: left: 0; top: 50%; transform: translateY(-50%);">
+      <a href="index.html">
+      <img src="images/LOGO.png" alt="Logo"  style="height:3.75rem;" class="mr-3">
+    </a>
+  </div>
+  <h1 class="display-4 text-center text-primary " data-i18n="site_name" style="margin-top: -6.25rem; margin-left: 5rem;">Visoko obrazovanje u Srbiji</h1>
+  </div>
+</div>
+</header>
+<body class="d-flex flex-column min-vh-100">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="nav_home">Početna</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html" data-i18n="nav_about">O nama</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html" data-i18n="nav_contact">Kontakt</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html" data-i18n="nav_login">Prijava</a></li>
+          <li class="nav-item active"><a class="nav-link" href="universities.html" data-i18n="nav_universities">Univerziteti</a></li>
+          <li class="nav-item"><a class="nav-link" href="map.html" data-i18n="nav_map">Mapa</a></li>
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+          <button class="btn btn-outline-primary btn-sm mr-2" onclick="setLanguage('sr')">SR</button>
+          <button class="btn btn-outline-primary btn-sm" onclick="setLanguage('en')">EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main class="container mt-5">
+    <h2 data-i18n="universities_heading">Univerziteti</h2>
+    <p data-i18n="universities_paragraph_1">
+      Ovde možete pronaći listu poznatih univerziteta.
+    </p>
+    <div id="no-results-text" class="alert alert-warning" role="alert" style="display:none;">Nema dostupnih univerziteta.</div>
+
+    <ul id="universities-list" class="list-group"></ul>
+  </main>
+  <div class="apiii">
+ <div id="loading">Učitavanje...</div>
+    <ul id="university-list" class="list-group"></ul>
+   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const list = document.getElementById("university-list");
+      const loading = document.getElementById("loading");
+
+      fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("http://universities.hipolabs.com/search?country=serbia"))
+        .then(response => {
+          if (!response.ok) throw new Error("Greška prilikom pristupa proxyju");
+          return response.json();
+        })
+        .then(data => {
+          const universities = JSON.parse(data.contents);
+          loading.style.display = "none";
+
+          universities.forEach(university => {
+            const li = document.createElement("li");
+            li.classList.add("list-group-item");
+            li.innerHTML = `<a href="${university.web_pages[0]}" target="_blank" rel="noopener noreferrer">${university.name}</a>`;
+            list.appendChild(li);
+          });
+        })
+        .catch(error => {
+          if (loading) loading.textContent = "Greška pri učitavanju univerziteta.";
+          console.error(error);
+        });
+    });
+  </script>
+</div>
+  <script src="http://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+  <div class="container">
+    <p class="mb-0" data-i18n="footer_text">
+      © 2025 Visoko obrazovanje u Srbiji. Sva prava zadržana.
+    </p>
+  </div>
+</footer>
+</html>

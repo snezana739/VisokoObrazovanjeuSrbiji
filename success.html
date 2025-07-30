@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <title data-i18n="success_title">Uspešno poslato</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+</head>
+<body class="d-flex flex-column min-vh-100">
+  <div class="container mt-5 text-center"> 
+    <h2 class="text-success" data-i18n="success_heading">Vaša poruka je uspešno poslata!</h2>
+    <p data-i18n="success_message">Hvala što ste nas kontaktirali.</p>
+    <a href="index.html" class="btn btn-primary" data-i18n="success_back">Nazad na početnu</a>
+  </div>
+
+  <script>
+    const translations = {
+      sr: {
+        success_title: "Uspešno poslato",
+        success_heading: "Vaša poruka je uspešno poslata!",
+        success_message: "Hvala što ste nas kontaktirali.",
+        success_back: "Nazad na početnu",
+        footer_text: "© 2025 Visoko obrazovanje u Srbiji. Sva prava zadržana.",
+      },
+      en: {
+        success_title: "Message Sent",
+        success_heading: "Your message was successfully sent!",
+        success_message: "Thank you for contacting us.",
+        success_back: "Back to homepage",
+        footer_text: "© 2025 Higher Education in Serbia. All rights reserved.",
+      }
+    };
+
+    function setLanguage(lang) {
+      localStorage.setItem("lang", lang);
+      translatePage();
+    }
+
+    function translatePage() {
+      const lang = localStorage.getItem("lang") || "sr";
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(elem => {
+        const key = elem.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+          if (elem.tagName === "TITLE") {
+            document.title = translations[lang][key];
+          } else {
+            elem.textContent = translations[lang][key];
+          }
+        }
+      });
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      if (!localStorage.getItem("lang")) {
+        localStorage.setItem("lang", "sr");
+      }
+      translatePage();
+    });
+  </script>
+</body>
+<footer class="bg-dark text-white text-center py-3 mt-auto">
+  <div class="container">
+    <p class="mb-0" data-i18n="footer_text">
+      © 2025 Visoko obrazovanje u Srbiji. Sva prava zadržana.
+    </p>
+  </div>
+</footer>
+</html>

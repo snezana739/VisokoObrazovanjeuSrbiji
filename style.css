@@ -1,0 +1,48 @@
+/* custom.css */
+
+/* Dodaj malo prostora ispod glavnih naslova */
+h1 {
+  margin-bottom: 1.5rem;
+}
+
+/* Stil za dugmad na hover */
+.btn-primary:hover {
+  background-color: #004085;
+  border-color: #003768;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Navbar brand font */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+/* Linkovi u navbaru */
+.navbar-nav .nav-link {
+  font-weight: 500;
+}
+
+/* Aktivni link u navbaru - tamnija plava boja */
+.navbar-nav .nav-item.active .nav-link {
+  color: #0056b3 !important;
+}
+
+/* Lepe margine za kartice */
+.card {
+  margin-bottom: 1.5rem;
+}
+
+/* Stil liste univerziteta */
+#universities-list li {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* Centriraj loading i no-results poruke */
+#loading-text,
+#no-results-text {
+  text-align: center;
+  font-weight: 600;
+}

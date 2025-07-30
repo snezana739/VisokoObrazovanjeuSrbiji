@@ -1,0 +1,122 @@
+
+
+.jumbotron {
+    overflow: hidden;
+}
+
+ @media (max-width: 48rem) {
+        .fixed-content {
+            left: 0.625rem; 
+            top: 30%; 
+        }
+
+        .fixed-content img {
+            height: 3.125rem; 
+        }
+
+        h1 {
+            font-size: 2rem; 
+        }
+    }
+
+html, body { height: 100%; }
+
+h2 {
+  margin-bottom: 1.5rem;
+}
+
+
+.btn-primary:hover {
+  background-color: #004085;
+  border-color: #003768;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.0625rem;
+}
+
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+}
+
+
+.navbar-nav .nav-item.active .nav-link {
+  color: #0056b3 !important;
+}
+
+.card {
+  margin-bottom: 1.5rem;
+}
+
+#universities-list li {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+#loading-text,
+#no-results-text {
+  text-align: center;
+  font-weight: 600;
+}
+
+.slika1 img {
+  width: 15.625rem;
+  height: 12.5rem;
+  float: left;
+  margin: 0 auto;
+  border: 0.125rem solid red;
+}
+.slika2 img {
+  width: 15.625rem;
+  height: 12.5rem;
+  display: block;
+  margin: 0 auto;
+  border: 0.125rem solid green;
+  margin-top: -12.5rem;
+}
+
+.slika3 img {
+  width: 15.625rem;
+  height: 12.5rem;
+  float: right;
+  margin: 0 auto;
+  border: 0.125rem solid blue;
+  margin-top: -12.5rem;
+}
+.container mt-5 {
+  font-size: 2.5rem;
+  font-family: arial;
+}
+
+.strelica img{
+margin-left: 20rem;
+margin-top: -0.9375rem;
+}
+
+.meni {
+  margin-left: 22.5rem;
+  margin-top: -3.125rem;
+}
+
+.studiranjeusrbiji {
+  margin-top: 3.125rem;
+  margin-left: 3.75rem;
+  margin-right: 3.75rem;
+  font-family: arial;
+  text-align: justify;
+}
+
+.lead {
+  font-family: arial;
+  text-align: justify;
+
+}
+
+.apiii {
+   margin-left: 5rem;
+}
